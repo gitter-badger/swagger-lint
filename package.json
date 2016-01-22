@@ -25,7 +25,8 @@
   },
   "homepage": "https://github.com/whitlockjc/swagger-lint#readme",
   "dependencies": {
-    "commander": "~2.9.0"
+    "commander": "~2.9.0",
+    "sway": "~0.6.0"
   },
   "devDependencies": {
     "sinon": "~1.17.2",

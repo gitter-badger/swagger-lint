@@ -2,7 +2,6 @@
 
 (function () {
   var expect = require('chai').expect;
-  var validator = require('../lib/validator');
 
   describe('Running slint', function () {
     var spawn = require('child_process').spawn;
@@ -85,48 +84,6 @@
         expect(output).to.match(/^\d{1}\.\d{1}\.\d{1}/);
         done();
       });
-    });
-  });
-
-  describe('The "validateSwagger" function', function () {
-    it('should validate a local swagger file', function () {
-      
-    });
-
-    it('should validate a remote swagger file', function () {
-
-    });
-  });
-
-  describe('The "isLocal" function', function () {
-    it('should return true if the location is a filesystem location', function () {
-      var local = validator.isLocal('./sample-swagger.json');
-
-      expect(local).to.be(true);
-    });
-
-    it('should return false if the location is a url', function () {
-      var remote = validator.isLocal('http://petstore.swagger.io/v2/swagger.json');
-
-      expect(remote).to.be(false);
-    });
-  });
-
-  describe('The "getResponse" function', function () {
-    it('should error if present', function () {
-
-    });
-
-    it('should error if the status code is not 200', function () {
-
-    });
-
-    it('should not error if status code is 200', function () {
-
-    });
-
-    it('should read the response body if present', function () {
-
     });
   });
 }());
