@@ -7,7 +7,7 @@
     "slint": "./bin/slint"
   },
   "scripts": {
-    "test": "gulp test"
+    "test": "mocha"
   },
   "repository": {
     "type": "git",
