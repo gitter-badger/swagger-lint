@@ -11,7 +11,7 @@
     });
 
     it('should return an exit code 0 if valid', function (done) {
-      var slint = spawn('slint', ['sample-swagger.json']);
+      var slint = spawn('slint', ['test/sample-swagger.json']);
 
       slint.on('close', function (code) {
         expect(code).to.equal(0);
