@@ -11,7 +11,7 @@
     });
 
     it('should return an exit code 0 if valid', function (done) {
-      var slint = spawn('slint', ['test/sample-swagger.json']);
+      var slint = spawn('slint', ['test/swaggers/good.json']);
 
       slint.on('close', function (code) {
         expect(code).to.equal(0);
@@ -53,17 +53,6 @@
       });
     });
 
-    it('should display help if given the -h option', function (done) {
-      var slint = spawn('slint', ['-h']);
-
-      slint.stdout.on('data', function (data) {
-        var output = data.toString('utf8');
-
-        expect(output).to.contain('Usage:');
-        done();
-      });
-    });
-
     it('should display the version if given the --version option', function (done) {
       var slint = spawn('slint', ['--version']);
 
@@ -75,13 +64,30 @@
       });
     });
 
-    it('should display the version if given the -V option', function (done) {
-      var slint = spawn('slint', ['-V']);
+    it('should display errors if present', function (done) {
+      var slint = spawn('slint', ['./test/swaggers/error.json']);
+      var output;
 
       slint.stdout.on('data', function (data) {
-        var output = data.toString('utf8');
+        output += data.toString('utf8');
+      });
 
-        expect(output).to.match(/^\d{1}\.\d{1}\.\d{1}/);
+      slint.on('close', function (code) {
+        expect(output).to.contain('Found 1 error(s)');
+        done();
+      });
+    });
+
+    it('should display warnings if present', function (done) {
+      var slint = spawn('slint', ['./test/swaggers/warning.json']);
+      var output;
+
+      slint.stdout.on('data', function (data) {
+        output += data.toString('utf8');
+      });
+
+      slint.on('close', function (code) {
+        expect(output).to.contain('Found 1 warning(s)');
         done();
       });
     });
