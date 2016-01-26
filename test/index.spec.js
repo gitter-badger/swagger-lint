@@ -6,12 +6,8 @@
   describe('Running slint', function () {
     var spawn = require('child_process').spawn;
 
-    before(function () {
-      spawn('npm', ['link']);
-    });
-
     it('should return an exit code 0 if valid', function (done) {
-      var slint = spawn('slint', ['test/swaggers/good.json']);
+      var slint = spawn('node', ['index.js', 'test/swaggers/good.json']);
 
       slint.on('close', function (code) {
         expect(code).to.equal(0);
@@ -20,7 +16,7 @@
     });
 
     it('should return a non-zero exit code if invalid', function (done) {
-      var slint = spawn('slint', ['INVALID\ FILE']);
+      var slint = spawn('node', ['index.js', 'INVALID\ FILE']);
 
       slint.on('close', function (code) {
         expect(code).to.not.equal(0);
@@ -29,7 +25,7 @@
     });
 
     it('should display usage if not given a swagger file', function (done) {
-      var slint = spawn('slint');
+      var slint = spawn('node', ['index.js']);
       var output;
 
       slint.stdout.on('data', function (data) {
@@ -43,7 +39,7 @@
     });
 
     it('should display help if given the --help option', function (done) {
-      var slint = spawn('slint', ['--help']);
+      var slint = spawn('node', ['index.js', '--help']);
 
       slint.stdout.on('data', function (data) {
         var output = data.toString('utf8');
@@ -54,7 +50,7 @@
     });
 
     it('should display the version if given the --version option', function (done) {
-      var slint = spawn('slint', ['--version']);
+      var slint = spawn('node', ['index.js', '--version']);
 
       slint.stdout.on('data', function (data) {
         var output = data.toString('utf8');
@@ -65,7 +61,7 @@
     });
 
     it('should display errors if present', function (done) {
-      var slint = spawn('slint', ['./test/swaggers/error.json']);
+      var slint = spawn('node', ['index.js', './test/swaggers/error.json']);
       var output;
 
       slint.stdout.on('data', function (data) {
@@ -79,7 +75,7 @@
     });
 
     it('should display warnings if present', function (done) {
-      var slint = spawn('slint', ['./test/swaggers/warning.json']);
+      var slint = spawn('node', ['index.js', './test/swaggers/warning.json']);
       var output;
 
       slint.stdout.on('data', function (data) {
