@@ -33,8 +33,6 @@ slint -h
 
     -h, --help     output usage information
     -V, --version  output the version number
-
-
 ```
 
 [swagger]: http://swagger.io/
