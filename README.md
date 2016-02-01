@@ -1,4 +1,6 @@
 # swagger-lint
+[![Build Status](https://travis-ci.org/shellhead/swagger-lint.svg?branch=master)](https://travis-ci.org/shellhead/swagger-lint)
+
 A fully pluggable tool for identifying and reporting on patterns in your
 [Swagger][swagger] documents.
 
