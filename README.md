@@ -1,4 +1,6 @@
 # swagger-lint
+
+[![Join the chat at https://gitter.im/shellhead/swagger-lint](https://badges.gitter.im/shellhead/swagger-lint.svg)](https://gitter.im/shellhead/swagger-lint?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 [![Build Status](https://travis-ci.org/shellhead/swagger-lint.svg?branch=master)](https://travis-ci.org/shellhead/swagger-lint)
 
 A fully pluggable tool for identifying and reporting on patterns in your
